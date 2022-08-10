@@ -1,0 +1,64 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+<title>jQuery로 방명록 제작</title>
+
+<script>
+    function writeNote(){
+        var name = $("#name").val();
+        var content = $("#content").val();
+
+        var td1 = $("<td>").text("1");
+        var td2 = $("<td>").text(name);
+        var td3 = $("<td>").text(content);
+
+        var date = new Date();
+        var td4 = $("<td>").text(date.getFullYear()+"-"+(date.getMonth()+1)+"-"+(date.getDate())+" "+date.getHours()+" : "+date.getMinutes());
+
+        var tr = $("<tr>");
+        tr.append(td1);
+        tr.append(td2);
+        tr.append(td3);
+        tr.append(td4);
+
+        var table = $("#table");
+        table.append(tr);
+
+        $("#name").val("");
+        $("#content").val("");
+
+    }
+
+</script>
+</head>
+<body>
+    <h2>방명록입니다.</h2>
+    <div>
+        <table>
+        <tr>
+            <th>작성자</th>
+            <td><input type="text" id="name" style="width: 100%;"></td>
+        </tr>
+        <tr>
+            <th>내용</th>
+            <td><input type="text" id="content" style="width: 300%;"></td>
+        </tr>
+        </table>
+        <br>
+        <button type="button" onclick="writeNote();">작성</button>
+        <br><br>
+        <table id="table" border="1" cellpadding="10" cellspacing="1">
+        <tr>
+            <td>번호</td>
+            <td>작성자</td>
+            <td>내용</td>
+            <td>작성일</td>
+        </tr>
+        </table>
+    </div>
+
+</body>
+</html>
